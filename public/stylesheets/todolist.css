@@ -1,0 +1,427 @@
+@import url("whitespace-reset.css");
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+
+#subBody {
+  display: grid;
+  grid-template-columns: 335px auto;
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "nav main";
+  height: 100%;
+}
+
+/*NAV*/
+
+nav {
+  grid-area: nav;
+  background: #464f77;
+  color: #b2b5c3;
+  padding: 66px 0 0 0;
+  box-sizing: border-box;
+}
+
+#allTodosCount,
+#completedTodosCount {
+  position: relative;
+  top: 0;
+}
+
+nav dt,
+nav dd {
+  vertical-align: middle;
+  letter-spacing: 1px;
+}
+
+nav dt {
+  color: white;
+  font-size: 18px;
+  padding: 0 30px 11px 112px;
+  vertical-align: top;
+}
+
+nav dd {
+  font-size: 15px;
+  display: block;
+  padding: 12px 32px 11px 137px ;
+}
+
+nav dt:last-of-type + dd {
+  padding: 15px 32px 11px 137px ;
+}
+
+.completedTodosDate {
+  text-decoration: line-through;
+}
+
+nav dt:before {
+  display: inline-block;
+  position: relative;
+  left: -10px;
+}
+
+nav dt:first-of-type:before {
+  content: url("images/all-todos.png");
+  top: 5px;
+}
+
+nav dt:last-of-type:before {
+  content: url("images/done.png");
+  top: 7px;
+}
+
+nav dt:last-of-type {
+  margin-top: 48px;
+}
+
+nav dd:hover {
+  background: #38405e;
+  color: white;
+}
+
+dd:hover span {
+  background: #148fd5;
+}
+
+nav span {
+  float: right;
+  font-size: 14px;
+  position: relative;
+  padding: 1px 5px 1px 5px;
+  border-radius: 10px;
+  background: #6b7292;
+}
+
+nav dt span {
+  top: 10px;
+  color: #b2b5c3;
+}
+
+/*MAIN*/
+
+main {
+  grid-area: main;
+  background: white;
+  color: #060606;
+  padding: 74px 100px 0 20px;
+  white-space: nowrap;
+}
+
+#hamburger,
+#navToggle {
+  display: none;
+}
+
+main ul img {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 12px;
+}
+
+main h1 {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 23px;
+  margin-left: 11px;
+  letter-spacing: 2px;
+}
+
+.blue_circle {
+  position: relative;
+  top: -2px;
+  left: 9px;
+  color: white;
+  background: #148fd5;
+  padding: 1px 4px 1px 6px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#plus {
+  display: inline-block;
+  position: relative;
+  left: -10px;
+  top: 1px;
+}
+
+#add {
+  text-decoration: none;
+  display: inline-block;
+  color: #148fd5;
+  padding: 15px 0 13px 22px;
+  font-size: 16px;
+  letter-spacing: 1px;
+
+}
+
+li {
+  border-top: solid 1px #e7e7e7;
+  padding: 17px 0 13px 0;
+}
+
+li img,
+li a {
+  display: inline-block;
+}
+
+li > input {
+  display: none;
+}
+
+.box {
+  margin-left: 12px;
+  margin-right: 8px;
+}
+
+.trashDiv {
+  float: right;
+  margin-right: 0;
+  padding-right: 8px;
+  position: relative;
+  top: -17px;
+  width: 30px;
+  height: 48px;
+}
+
+.trashDiv:hover {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
+.trashDiv img {
+  padding-top: 15px;
+}
+
+.trashDiv input {
+  display: none;
+}
+
+li:hover {
+  background: rgba(0,100,205, 0.2);
+}
+
+li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li.checked {
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+li a:hover,
+li label:hover {
+  color: #148fd5;
+}
+
+label {
+  cursor: pointer;
+}
+
+/*MODAL FORM*/
+
+#menuToggle {
+  display: none;
+}
+#menu {
+  display: none;
+}
+#menuToggle + #overlayContainer form {
+  display: block;
+  position: absolute;
+  top: 107px;
+  left: 50%;
+  z-index: 2;
+  background: white;
+  padding: 37px 37px 38px 30px;
+  box-sizing: border-box;
+  width: 575px;
+  margin: 0 0 0 -160px;
+}
+
+#menuToggle + #overlayContainer:before {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  content: "";
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal fieldset {
+  border: none;
+}
+
+.modal dl {
+  display: grid;
+  grid-template-columns: 110px 395px;
+  grid-template-rows: 35px 35px 145px 36px;
+  grid-row-gap: 25px;
+  grid-template-areas:
+    "title title-field"
+    "duedate duedate-field"
+    "description description-field"
+    ". buttons";
+}
+
+.modal dt label {
+  color: #757575;
+}
+
+.modal dt:first-of-type {
+  grid-area: title;
+  align-self: center;
+  letter-spacing: 1px
+}
+
+.modal dt:nth-of-type(2) {
+  grid-area: duedate;
+  align-self: center;
+}
+
+.modal dt:last-of-type {
+  grid-area: description;
+  padding-top: 10px;
+}
+
+.modal dd:first-of-type {
+  grid-area: title-field;
+}
+
+.modal dd:nth-of-type(2) {
+  grid-area: duedate-field;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal dd:nth-of-type(3) {
+  grid-area: description-field;
+}
+
+.modal dd:last-of-type {
+  grid-area: buttons;
+}
+
+.modal select,
+.modal input[type="text"],
+.modal textarea {
+  padding: 9px;
+  box-sizing: border-box;
+  font: normal 16px Helvetica, Arial, sans-serif;
+  border-radius: 5px;
+  border: 1px solid #cecece;
+}
+
+.modal input[type="text"],
+.modal textarea {
+  width: 396px;
+  border-radius: 5px;
+  border: 1px solid #cecece;
+}
+
+.modal input[type="text"],
+.modal select {
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid #cecece;
+}
+
+.modal textarea {
+  resize: none;
+  height: 144px;
+}
+
+.modal select {
+  width: 116px;
+  background-image: url("images/select.png");
+  background-position: 92% center;
+  background-repeat: no-repeat;
+  padding-right: .5rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: grey;
+}
+
+.modal option:not(:first-of-type) {
+  color: black;
+}
+
+.modal button {
+  border: none;
+  width: 184px;
+  height: 36px;
+  background: #148fd5;
+  color: white;
+  border-radius: 4px;
+  margin-top: -2px;
+  font-size: 16px;
+  letter-spacing: .8px;
+}
+
+.modal button:first-of-type {
+  margin-right: 14px;
+}
+
+/*Slightly adjusting some icons*/
+
+li:nth-of-type(1) .trashcan,
+li:nth-of-type(2) .trashcan,
+li:nth-of-type(4) .trashcan {
+  top: -1px;
+}
+
+li:nth-of-type(6) .trashcan {
+  top: -3px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  #subBody {
+    max-width: 768px;
+    grid-template-areas:
+      "main main";
+  }
+
+  #hamburger {
+    display: block;
+    width: 25px;
+    height: 20px;
+    position: relative;
+    top: 3px;
+    left: 11px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  main {
+    padding-top: 20px;
+  }
+
+  main h1 {
+    padding-top: 35px;
+  }
+
+  #navToggle:checked + #subBody {
+    grid-template-areas:
+      "nav main";
+  }
+
+  #navToggle:checked + #subBody nav {
+    display: block;
+  }
+}
