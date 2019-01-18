@@ -24,6 +24,7 @@ GEM
     minitest (5.10.3)
     multi_json (1.12.2)
     mustermann (1.0.1)
+    pg (1.1.4)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -78,6 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   erubi
+  pg
   pry
   rack-contrib
   rack-test
@@ -90,4 +92,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.16.2
+   1.16.6
